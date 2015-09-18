@@ -15,11 +15,10 @@ RUN  cd /tmp/Python-2.7.10 && ./configure &&  make && make install && apt-get -y
 
 RUN cd ~/ && mkdir .emacs.d && mkdir .emacs.d/auto-install && wget http://www.emacswiki.org/emacs/download/auto-install.el -O ./.emacs.d/auto-install/auto-install.el
 RUN cd ~/ && emacs --batch -Q -f batch-byte-compile ./.emacs.d/auto-install/auto-install.el
-RUN cd ~/ && wget https://gist.githubusercontent.com/fvi-att/bf10262d17d445d3c921/raw/452ba722198984ef574868d5cf2b5442e84ec00b/gistfile1.el -O ./.emacs.d/init.el 
+RUN cd ~/ && wget https://gist.githubusercontent.com/fvi-att/bf10262d17d445d3c921/raw/57c37d351ced995cd82699e76e171cfe0d9a05e0/gistfile1.el -O ./.emacs.d/init.el 
 RUN cd ~/ && git clone https://github.com/hayamiz/twittering-mode.git && mv twittering-mode ./.emacs.d/twittering-mode-3.0.0
 
-ADD install.el /root/install.el
-RUN cd ~/ emacs --script install.el
-
+#get all plugin from git hub
+RUN cd ~/.emacs.d/ && mkdir git && cd git && git clone https://github.com/auto-complete/auto-complete.git && git clone https://github.com/auto-complete/fuzzy-el.git && git clone https://github.com/auto-complete/popup-el.git && git clone https://github.com/m2ym/undohist-el.git
 
 CMD /bin/bash
