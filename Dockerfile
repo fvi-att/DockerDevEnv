@@ -12,7 +12,7 @@ RUN apt-get install -y build-essential emacs24 vim git sudo wget net-tools expec
 
 #install latest python
 RUN  cd /tmp && wget https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz -O Python.tgz && tar -xzf Python.tgz
-RUN  cd /tmp/Python-2.7.10 && ./configure &&  make && make install && apt-get -y install python-dev && apt-get -y install ipyton
+RUN  cd /tmp/Python-2.7.10 && ./configure &&  make && make install && apt-get -y install python-dev
 
 
 RUN cd ~/ && mkdir .emacs.d && mkdir .emacs.d/auto-install && wget http://www.emacswiki.org/emacs/download/auto-install.el -O ./.emacs.d/auto-install/auto-install.el
