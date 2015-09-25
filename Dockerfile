@@ -4,6 +4,8 @@ MAINTAINER fvi@shimizu <jshimizujp@gmail.com>
 #change promple UX
 ENV PS1 \[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h:\w -> \n\$\[\e[0;37m\]
 
+ENV LANG ja_JP.UTF-8
+
 #basic settings
 RUN awk '$1 ~ "^deb" { $3 = $3 "-backports"; print; exit }' /etc/apt/sources.list > /etc/apt/sources.list.d/backports.list
 
